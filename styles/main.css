@@ -6,8 +6,17 @@ body {
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
+
+	/* Variables */
+	--background-color: #323232;
+
+	/* Background color */
+	/* background-color: var(--background-color); */
+	background-color: aliceblue;
 }
 
 #gameContainer {
-	background-color: #323232;
+	background-color: var(--background-color);
+	position: relative;
+	overflow: hidden;
 }

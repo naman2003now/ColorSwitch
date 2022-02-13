@@ -1,6 +1,5 @@
 export default class Ball {
 	constructor(gameSettings) {
-		this.lastFrameTime = Date.now()
 		this.velocity = -750
 		this.position = {x: 600, y: 1000}
 		this.worldSize = gameSettings.worldSize
@@ -11,8 +10,11 @@ export default class Ball {
 		this.currentColor = 0
 		this.sprite = this.createBall()
 		this.gravity = gameSettings.gravity
+		this.scroll = gameSettings.scroll
+		this.positionMax = 1200
 
 		//Start Game Loop
+		this.lastFrameTime = Date.now()
 		setInterval(
 			() => this.gameLoop((Date.now() - this.lastFrameTime) / 1000),
 			0
@@ -23,11 +25,11 @@ export default class Ball {
 
 	createBall = () => {
 		let sprite = document.createElement("div")
-		sprite.style.width = this.worldToScreenCoord(this.size) + "px"
-		sprite.style.height = this.worldToScreenCoord(this.size) + "px"
+		sprite.style.width = this.worldToScreenCoord(this.size, 0) + "px"
+		sprite.style.height = this.worldToScreenCoord(this.size, 0) + "px"
 		sprite.style.position = "absolute"
 		sprite.style.top = this.worldToScreenCoord(this.position.y) + "px"
-		sprite.style.left = this.worldToScreenCoord(this.position.x) + "px"
+		sprite.style.left = this.worldToScreenCoord(this.position.x, 0) + "px"
 		sprite.style.backgroundColor = this.colors[this.currentColor]
 		sprite.style.borderRadius =
 			this.worldToScreenCoord(this.size / 2) + "px"
@@ -48,8 +50,26 @@ export default class Ball {
 		this.velocity += this.gravity * deltaTime
 		this.position.y += this.velocity * deltaTime
 
-		// Update Ui position
-		this.sprite.style.left = this.worldToScreenCoord(this.position.x) + "px"
+		// if (
+		// 	this.worldToScreenCoord(this.position.y) <
+		// 	this.worldToScreenCoord(this.worldSize / 2, 0)
+		// ) {
+		// 	this.scroll(
+		// 		this.worldToScreenCoord(this.worldSize / 2, 0) -
+		// 			this.worldToScreenCoord(this.position.y)
+		// 	)
+		// }
+
+		if (-this.positionMax < -this.position.y) {
+			this.scroll(
+				this.worldToScreenCoord(this.worldSize / 2, 0) -
+					this.worldToScreenCoord(this.position.y)
+			)
+			this.positionMax = this.position.y
+		}
+
+		this.sprite.style.left =
+			this.worldToScreenCoord(this.position.x, 0) + "px"
 		this.sprite.style.top = this.worldToScreenCoord(this.position.y) + "px"
 		this.lastFrameTime = Date.now()
 	}

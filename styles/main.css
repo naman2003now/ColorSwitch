@@ -19,4 +19,50 @@ body {
 	background-color: var(--background-color);
 	position: relative;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+}
+
+.obstricleContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	width: 100%;
+}
+
+#circleObstricle {
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	width: 400px;
+	height: 400px;
+}
+
+.circleElement {
+	width: 50%;
+	height: 50%;
+}
+
+.circleElement#top-left {
+	border-top-left-radius: 100%;
+}
+.circleElement#top-right {
+	border-top-right-radius: 100%;
+}
+.circleElement#bottom-left {
+	border-bottom-left-radius: 100%;
+}
+.circleElement#bottom-right {
+	border-bottom-right-radius: 100%;
+}
+
+.circleCover {
+	position: absolute;
+	background-color: var(--background-color);
+	border-radius: 50%;
+	width: 84%;
+	height: 84%;
+	top: 8%;
+	right: 8%;
 }

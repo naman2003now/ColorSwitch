@@ -2,6 +2,7 @@ let canvas = document.getElementById("gameContainer")
 
 const gameSettings = {
 	ballColors: ["#ef476f", "#ffd166", "#06d6a0", "#118ab2"],
+	backgroundColor: "#073b4c",
 }
 
 const setFrameBuffers = () => {

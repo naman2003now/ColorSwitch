@@ -1,12 +1,14 @@
 export default class Circle {
-	constructor(gameSettings) {
+	constructor(gameSettings, relativeSpawnPosition) {
+		this.ballSize = gameSettings.ballSize
 		this.worldSize = gameSettings.worldSize
 		this.colors = gameSettings.ballColors
 		this.size = 400
 		this.gameCanvas = gameSettings.canvas
 		this.worldToScreenCoord = gameSettings.worldToScreenCoord
-		this.position = 400
+		this.position = -relativeSpawnPosition - 400
 		this.rotationSpeed = 100
+		this.currentRotation = 0
 
 		let temp = this.createSprite()
 		this.container = temp.container
@@ -48,8 +50,38 @@ export default class Circle {
 
 	gameLoop = (deltaTime) => {
 		this.currentRotation += this.rotationSpeed * deltaTime
-		this.circle.style.transform =
-			"rotate(" + this.rotationSpeed * deltaTime + "deg)"
+		this.circle.style.transform = "rotate(" + this.currentRotation + "deg)"
 		this.container.style.top = this.worldToScreenCoord(this.position) + "px"
+		this.lastFrameTime = Date.now()
+	}
+
+	checkCollision = (ballPosition, colorIndex) => {
+		let wierdSolutionToThisProblem = {
+			3: 0,
+			2: 3,
+			1: 1,
+			0: 2,
+		}
+		colorIndex = wierdSolutionToThisProblem[colorIndex]
+		let distance = ballPosition - this.position - this.size / 2
+		let negativeMultiplier = 1
+		if (distance > 0) {
+			negativeMultiplier = 0
+		}
+		if (
+			Math.abs(distance) < this.size / 2 + this.ballSize / 2 &&
+			Math.abs(distance) > (this.size / 2) * 0.85 - this.ballSize
+		) {
+			if (
+				(this.currentRotation + 180 * negativeMultiplier) % 360 >
+					90 * colorIndex &&
+				(this.currentRotation + 180 * negativeMultiplier) % 360 <
+					90 * (colorIndex + 1)
+			) {
+			} else {
+				return true
+			}
+		}
+		return false
 	}
 }

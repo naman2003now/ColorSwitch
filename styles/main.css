@@ -12,10 +12,11 @@ body {
 
 	/* Background color */
 	/* background-color: var(--background-color); */
-	background-color: aliceblue;
+	background-color: var(--background-color);
 }
 
 #gameContainer {
+	border-bottom: #202020 5px dashed;
 	background-color: var(--background-color);
 	position: relative;
 	overflow: hidden;
@@ -61,8 +62,8 @@ body {
 	position: absolute;
 	background-color: var(--background-color);
 	border-radius: 50%;
-	width: 84%;
-	height: 84%;
-	top: 8%;
-	right: 8%;
+	width: 85%;
+	height: 85%;
+	top: 7.5%;
+	right: 7.5%;
 }

@@ -1,7 +1,7 @@
 export default class Ball {
 	constructor(gameSettings) {
 		this.velocity = 0 //-750
-		this.position = {x: 600, y: 1000}
+		this.position = {x: 600 - 12.5, y: 1000}
 		this.worldSize = gameSettings.worldSize
 		this.worldToScreenCoord = gameSettings.worldToScreenCoord
 		this.size = gameSettings.ballSize
@@ -92,7 +92,7 @@ export default class Ball {
 
 	gameOver = (gameSettings) => {
 		this.velocity = 0 //-750
-		this.position = {x: 600, y: 1000}
+		this.position = {x: 600 - 12.5, y: 1000}
 		this.worldSize = gameSettings.worldSize
 		this.worldToScreenCoord = gameSettings.worldToScreenCoord
 		this.size = gameSettings.ballSize
@@ -105,5 +105,10 @@ export default class Ball {
 		this.positionMax = 1000
 		this.gameStarted = false
 		this.lastFrameTime = Date.now()
+	}
+
+	colorSwitch = (color) => {
+		this.currentColor = color
+		this.sprite.style.backgroundColor = this.colors[color]
 	}
 }

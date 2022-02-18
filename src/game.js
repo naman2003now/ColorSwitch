@@ -32,12 +32,14 @@ const updateFrameBuffers = () => {
 }
 
 setInterval(() => {
-	if (obstacleSpawner.checkCollision(ball.position.y, ball.currentColor)) {
+	if (
+		obstacleSpawner.checkCollision(ball.position.y, ball.currentColor, ball)
+	) {
+		scroll = 0
+		lastSpawnPosition = 0
 		canvas.innerHTML = ""
 		obstacleSpawner.gameOver()
 		ball.gameOver(gameSettings)
-		scroll = 0
-		lastSpawnPosition = 0
 		obstacleSpawner.spawn(-400)
 	}
 }, 0)

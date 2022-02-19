@@ -55,3 +55,7 @@ setInterval(() => {
 
 window.onresize = updateFrameBuffers
 window.onload = updateFrameBuffers
+
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker.register("sw.js")
+}

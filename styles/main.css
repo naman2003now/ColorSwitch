@@ -67,3 +67,100 @@ body {
 	top: 7.5%;
 	right: 7.5%;
 }
+
+.windMill {
+	position: relative;
+	height: 400px;
+	width: 400px;
+	transform: translate(-40%) rotate(100deg);
+
+	--wing-one-color: #ef476f;
+	--wing-two-color: #ffd166;
+	--wing-three-color: #06d6a0;
+	--wing-four-color: #118ab2;
+}
+
+#score {
+	position: absolute;
+	color: #505050;
+	top: 0;
+	left: 0;
+}
+
+.wing#one {
+	position: absolute;
+	right: 0;
+	top: 46%;
+	background-color: var(--wing-one-color);
+	width: 46%;
+	height: 8%;
+	border-radius: 0 100px 100px 0;
+}
+
+.wing#two {
+	position: absolute;
+	top: 0;
+	right: 46%;
+	background-color: var(--wing-two-color);
+	width: 8%;
+	height: 46%;
+	border-radius: 100px 100px 0 0;
+}
+.wing#three {
+	position: absolute;
+	left: 0;
+	top: 46%;
+	background-color: var(--wing-three-color);
+	width: 46%;
+	height: 8%;
+	border-radius: 100px 0 0 100px;
+}
+.wing#four {
+	position: absolute;
+	bottom: 0;
+	left: 46%;
+	background-color: var(--wing-four-color);
+	width: 8%;
+	height: 46%;
+	border-radius: 0 0 100px 100px;
+}
+.wing#axail {
+	position: absolute;
+	top: 46%;
+	left: 46%;
+	overflow: hidden;
+	width: 8%;
+	height: 8%;
+}
+
+.axail#container {
+	transform: translate(-25%, -25%) rotate(45deg);
+	width: 200%;
+	height: 200%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.axail#one {
+	background-color: var(--wing-one-color);
+	width: 50%;
+	height: 50%;
+}
+
+.axail#two {
+	background-color: var(--wing-two-color);
+	width: 50%;
+	height: 50%;
+}
+
+.axail#three {
+	background-color: var(--wing-three-color);
+	width: 50%;
+	height: 50%;
+}
+
+.axail#four {
+	background-color: var(--wing-four-color);
+	width: 50%;
+	height: 50%;
+}

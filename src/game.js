@@ -37,7 +37,7 @@ setInterval(() => {
 	) {
 		scroll = 0
 		lastSpawnPosition = 0
-		canvas.innerHTML = ""
+		canvas.innerHTML = '<h1 id="score">Score: 0</h1>'
 		obstacleSpawner.gameOver()
 		ball.gameOver(gameSettings)
 		obstacleSpawner.spawn(-400)
@@ -50,6 +50,7 @@ setInterval(() => {
 		lastSpawnPosition = Math.abs(Math.floor(scroll / 800))
 		obstacleSpawner.spawn(scroll)
 	}
+	document.getElementById("score").innerHTML = "Score: " + lastSpawnPosition
 }, 0)
 
 window.onresize = updateFrameBuffers

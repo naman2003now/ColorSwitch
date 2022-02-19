@@ -1,14 +1,15 @@
 import Circle from "./Obstacles/Circle.js"
 import ColorSwitch from "./Obstacles/ColorSwitch.js"
+import WindMill from "./Obstacles/Windmill.js"
 
 export default class ObstacleSpawner {
 	constructor(gameSettings) {
 		this.worldToScreenCoord = gameSettings.worldToScreenCoord
 		this.screenSize = this.worldToScreenCoord(gameSettings.worldSize, 0)
-		this.obstacles = [Circle, ColorSwitch]
+		this.obstacles = [WindMill, Circle, ColorSwitch]
 		this.currentlyInTheField = []
 		this.gameSettings = gameSettings
-		this.switchAvailable = 0
+		this.switchAvailable = 1
 	}
 
 	spawn = (scroll) => {

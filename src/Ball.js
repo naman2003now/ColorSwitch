@@ -17,6 +17,7 @@ export default class Ball {
 		this.lastFrameTime = Date.now()
 		//eventloop
 		document.onclick = this.jump
+		document.onkeydown = this.jump
 	}
 
 	createBall = () => {
